@@ -129,7 +129,8 @@ def sample_from_model(coefficients, generator, n_time, x_init, T, opt):
 #%%
 def sample_and_test(args):
     torch.manual_seed(42)
-    device = 'cuda:0'
+    args.card_num
+    device = 'cuda:{}'.format(args.card_num)
     
     if args.dataset == 'cifar10':
         real_img_dir = 'pytorch_fid/cifar10_train_stat.npy'
@@ -262,8 +263,7 @@ if __name__ == '__main__':
     parser.add_argument('--z_emb_dim', type=int, default=256)
     parser.add_argument('--t_emb_dim', type=int, default=256)
     parser.add_argument('--batch_size', type=int, default=200, help='sample generating batch size')
-        
-
+    parser.add_argument('--card_num', type=int, default=0)    
 
 
    
